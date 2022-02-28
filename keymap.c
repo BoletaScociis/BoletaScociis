@@ -46,7 +46,7 @@ enum anne_pro_layers {
  const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_BASE_LAYER] = KEYMAP( /* Base */
     KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC,
-    TD_TAB_LS1, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,
+    TD(TD_TAB_LS1), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,
     LT(_FN1_LAYER,KC_CAPS), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT,
     KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_UP),
     KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, LT(_FN1_LAYER,KC_LEFT), LT(_FN2_LAYER,KC_DOWN), RCTL_T(KC_RGHT)
@@ -68,9 +68,9 @@ enum anne_pro_layers {
   */
  [_FN1_LAYER] = KEYMAP( /* Base */
     KC_NO, KC_NO, KC_NO, KC_F3, KC_NO, KC_NO, KC_NO, KC_NO, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_BSPC,
-    TD_TAB_LS2, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_NO, KC_I, KC_NO, KC_P, KC_LRBC, KC_RBRC, KC_BSLS,
+    TD(TD_TAB_LS2), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_NO, KC_I, KC_NO, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,
     KC_CAPS, KC_NO, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_NO, KC_NO, KC_NO, KC_ENT,
-    KC_LSFT(LALT), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_NO, KC_M, KC_NO, KC_NO, KC_SLSH, KC_NO,
+    KC_LSFT(KC_LALT), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_NO, KC_M, KC_NO, KC_NO, KC_SLSH, KC_NO,
     KC_NO, KC_NO, KC_LALT, KC_SPC, KC_NO, KC_NO, KC_NO, KC_NO
 ),
   /*
@@ -91,12 +91,11 @@ enum anne_pro_layers {
   */
  [_FN2_LAYER] = KEYMAP( /* Base */
     KC_NO, KC_NO, KC_NO, KC_F3, KC_NO, KC_NO, KC_NO, KC_F7, KC_NO, KC_F9, KC_F10, KC_F11, KC_F12, KC_BSPC,
-    TD_TAB_LS3, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_NO, KC_U, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    TD(TD_TAB_LS3), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_NO, KC_U, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
     KC_DEL, KC_NO, KC_S, KC_D, KC_NO, KC_G, KC_H, KC_J, KC_NO, KC_NO, KC_NO, KC_NO, KC_ENT,
     KC_NO, KC_Z, KC_X, KC_C, KC_V, KC_NO, KC_NO, KC_M, KC_NO, KC_NO, KC_SLSH, KC_NO,
     KC_NO, KC_NO, KC_LALT, KC_SPC, KC_NO, KC_NO, KC_NO, KC_NO
  ),
-};
 /*
   * Layer _FN3_LAYER
   * ,-----------------------------------------------------------------------------------------.
@@ -117,8 +116,9 @@ enum anne_pro_layers {
     MO(_FN2_LAYER), KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_HOME, KC_END, KC_TRNS,
     KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_PGDN, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_INS, KC_DEL, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_FN1_LAYER), MO(_FN2_LAYER), KC_TRNS
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_FN1_LAYER), MO(_FN2_LAYER), KC_TRNS,
  ),
+};
 const uint16_t keymaps_size = sizeof(keymaps);
 
 
@@ -193,7 +193,7 @@ bool led_update_user(led_t leds) {
 // TD_TAB_LS1 = Tap Dance Tab LayerSwitch 1 
 // For you to know why i chose that name.
 
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_actions[] = {
     // Tap once for TAB, twice for Switch to Layer1
     [TD_TAB_LS1] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN1_LAYER),
     // Tap once for TAB, twice for Switch to Layer2
