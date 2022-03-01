@@ -197,9 +197,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     // Tap once for TAB, twice for Switch to Layer1
     [TD_TAB_LS1] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN1_LAYER),
     // Tap once for TAB, twice for Switch to Layer2
-    [TD_TAB_LS2] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN2_LAYER),
+    /*[TD_TAB_LS2] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN2_LAYER),*/
     // Tap once for TAB, twice for Switch to Base Layer
-    [TD_TAB_LS3] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _BASE_LAYER),
+    /*[TD_TAB_LS3] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _BASE_LAYER),*/
 
 // Althoug self explanatory, each function does a tab when you tap once the TAB key
 // But when you press it twice on an interval of 175 ms it will change layer
