@@ -9,12 +9,37 @@ enum anne_pro_layers {
   _FN2_LAYER,
   _FN3_LAYER,
 
+  };
+
+// Also i made another declaration here, maybe they must be appart from layers.
+enum {
 /*I declared three Tap Dance (TD) functions to make the switch from layer to layer*/
 /*At the end of the document are the functions and the explanation*/
   TD_TAB_LS1,
   TD_TAB_LS2,
   TD_TAB_LS3,
-  };
+};
+// * -------------------------TAP DANCE------------------------- * 
+// Tap Dance Functions definitions:
+// The name convention follows this logic that i made:
+// TD_TAB_LS1 = Tap Dance Tab LayerSwitch 1 
+// For you to know why i chose that name.
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for TAB, twice for Switch to Layer1
+    [TD_TAB_LS1] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN1_LAYER),
+    // Tap once for TAB, twice for Switch to Layer2
+    [TD_TAB_LS2] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN2_LAYER),
+    // Tap once for TAB, twice for Switch to Base Layer
+    [TD_TAB_LS3] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _BASE_LAYER),
+
+// Althoug self explanatory, each function does a tab when you tap once the TAB key
+// But when you press it twice on an interval of 175 ms it will change layer
+// To what layer it changes depends on what layer you are in, as you can see on the
+// keyboard mapping, if you are on base layer, you use the TD_TAB_LS1 wich switches to _FN1_LAYER
+// * ----------------------------------------------------------- *
+
+};
 
 // Key symbols are based on QMK. Use them to remap your keyboard
 /*
@@ -187,26 +212,5 @@ bool led_update_user(led_t leds) {
     }
   }
 
-// * -------------------------TAP DANCE------------------------- * 
-// Tap Dance Functions definitions:
-// The name convention follows this logic that i made:
-// TD_TAB_LS1 = Tap Dance Tab LayerSwitch 1 
-// For you to know why i chose that name.
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for TAB, twice for Switch to Layer1
-    [TD_TAB_LS1] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN1_LAYER),
-    // Tap once for TAB, twice for Switch to Layer2
-    /*[TD_TAB_LS2] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN2_LAYER),*/
-    // Tap once for TAB, twice for Switch to Base Layer
-    /*[TD_TAB_LS3] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _BASE_LAYER),*/
-
-// Althoug self explanatory, each function does a tab when you tap once the TAB key
-// But when you press it twice on an interval of 175 ms it will change layer
-// To what layer it changes depends on what layer you are in, as you can see on the
-// keyboard mapping, if you are on base layer, you use the TD_TAB_LS1 wich switches to _FN1_LAYER
-// * ----------------------------------------------------------- *
-
-};
   return true;
 }
