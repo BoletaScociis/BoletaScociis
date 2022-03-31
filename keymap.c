@@ -12,15 +12,15 @@ enum anne_pro_layers {
 
   };
 
-// Also i made another declaration here, maybe they must be apart from layers.
+// Also I made another declaration here, they must be separate from the layers.
 enum {
-/*I declared three Tap Dance (TD) functions to make the switch from layer to layer*/
+/*I declared three Tap Dance (TD) functions to make the switch from layer to layer */
 /*At the end of the document are the functions and the explanation*/
-  TD_LALT_LS1,
+  TD_TAB_LS1,
   TD_TAB_LS2,
   TD_TAB_LS3,
-  TD_TAB_LS4,
-  TD_TAB_LS5,
+  TD_LALT_LS4,
+ 
 
 };
 // * -------------------------TAP DANCE------------------------- * 
@@ -30,25 +30,148 @@ enum {
 // For you to know why i chose that name.
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  // Tap once for LALT, twice for Switch to Layer 4
-    [TD_LALT_LS1] = ACTION_TAP_DANCE_LAYER_MOVE (KC_LALT, _FN4_LAYER),
     // Tap once for TAB, twice for Switch to Layer1
-    [TD_TAB_LS2] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN1_LAYER),
+    [TD_TAB_LS1] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN1_LAYER),
     // Tap once for TAB, twice for Switch to Layer2
-    [TD_TAB_LS3] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN2_LAYER),
-    // Tap once for TAB, twice for Switch to Layer3
-    [TD_TAB_LS4] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN3_LAYER),
+    [TD_TAB_LS2] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _FN2_LAYER),
     // Tap once for TAB, twice for Switch to Base Layer
-    [TD_TAB_LS5] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _BASE_LAYER),
- 
+    [TD_TAB_LS3] = ACTION_TAP_DANCE_LAYER_MOVE(KC_TAB, _BASE_LAYER),
+    // Tap once for LALT, twice for Switch to Layer 3
+    [TD_LALT_LS4] = ACTION_TAP_DANCE_LAYER_MOVE (KC_LALT, _FN3_LAYER),
     
-// Althoug self explanatory, each function does a tab when you tap once the TAB key
-// But when you press it twice on an interval of 175 ms it will change layer
-// To what layer it changes depends on what layer you are in, as you can see on the
-// keyboard mapping, if you are on base layer, you use the TD_TAB_LS1 wich switches to _FN1_LAYER
+    
+// Each function except TD_LALT_LSS involves tapping the TAB button twice to switch layers. Tapping once functions as a regular TAB. 
+// The principle is the same for TD_LALT_LSS
 // * ----------------------------------------------------------- *
 
 };
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(0,KC_1):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_1)); // Intercept hold function to send Lshift+1
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_2):
+            if (!record->tap.count && record->event.pressed) {
+                   tap_code16(LSFT(KC_2)); // Intercept hold function to send Lshift+2
+            return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_3):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_3)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_4):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_4)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_5):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_5)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_6):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_6)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_7):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_7)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_8):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_8)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_9):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_9)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_0):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_0)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_MINS):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_MINS)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_EQL):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_EQL)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_LBRC):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_LBRC)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_RBRC):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_RBRC)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_BSLS):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_BSLS)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_SCLN):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_SCLN)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_QUOT):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_QUOT)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_COMM):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_COMM)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_DOT):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_DOT)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_SLSH):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(LSFT(KC_SLSH)); // Intercept hold function to send Ctrl-V
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+            }
+    return true;
+};
+
+
 
 // Key symbols are based on QMK. Use them to remap your keyboard
 /*
@@ -56,70 +179,50 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 * ,-----------------------------------------------------------------------------------------.
 * | Ltn |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  Brve|  Crcmflx | Bksp|
 * |-----------------------------------------------------------------------------------------+
-* | Tab    |  θ  |  ω  |  ε  |  ρ  |  τ  |  ψ  |  υ  |  ι  |  ο  |  π  |  [  |  ]  |   \    |
+* | Tab    | θ/Θ  | ω/Ω | ε/E | ρ/P | τ/T | ψ/Ψ | υ/Y | ι/I | ο/O | π/Π | [/{ |  }] |   \/ᾼ |
 * |-----------------------------------------------------------------------------------------+
-* | Caps    |  α  |  σ  |  δ  |  φ  |  γ  |  η  |  ξ  |  κ  |  λ  |  ;  |  '  |    Enter    |
+* | Caps    |  α/A  |  σ/Σ | δ/Δ | φ/Φ  | γ/Γ | η/H | ξ/Ξ  | κ/K  | λ/Λ |  ;/·  | '/" | Ent |
 * |-----------------------------------------------------------------------------------------+
-* | Shift      |  ζ  |  χ  |  ξ  |  ν  |  β  |  ν  |  μ  |  ,  |  .  |  /  |     UP         |
+* | Shift      |  ζ/Z | χ/X  | ξ/Ξ | ν/N |  β/B |  ν/N |  μ/M |  ,/<  | ./> |  /?|  UP      |
 * |-----------------------------------------------------------------------------------------+
 * | Ctrl  |  L1   |  Alt  |               space             |  Alt  |  LEFT  |  DWN  |  RGHT|
 * \-----------------------------------------------------------------------------------------/
 */
+
  const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_BASE_LAYER] = KEYMAP( /* Base */
-    KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC,
-    TD(TD_TAB_LS2), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS,
-    KC_DEL, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT,
-    KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_UP,
-    KC_LCTL, KC_LGUI, TD(TD_LALT_LS1), KC_SPC, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_GESC, LT(0,KC_1), LT(0,KC_2), LT(0,KC_3), LT(0,KC_4), LT(0,KC_5), LT(0,KC_6), LT(0,KC_7), LT(0,KC_8), LT(0,KC_9), LT(0,KC_0), LT(0,KC_MINS), LT(0,KC_EQL), LT(0,KC_BSPC),
+    TD(TD_TAB_LS1), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, LT(0,KC_LBRC), LT(0,KC_RBRC), LT(0,KC_BSLS),
+    KC_CAPS, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, LT(0,KC_SCLN), LT(0,KC_QUOT), KC_ENT,
+    KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, LT(0,KC_COMM), LT(0,KC_DOT), LT(0,KC_SLSH), RSFT_T(KC_UP),
+    KC_LCTL, KC_LGUI, TD(TD_LALT_LS4), KC_SPC, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
 ),
+
   /*
   * Layer _FN1_LAYER
-  * ,-----------------------------------------------------------------------------------------.
-  * |       |  !  | @   | # |  $   |   %  |   ^  |   &  |  * |  ( | ) | _ | ϋ |  BSPC         |
-  * |-----------------------------------------------------------------------------------------+
-  * | Tab    |  Θ  |  Ω  |  Ε  |  Ρ  |  Τ  | Ψ  |  Υ   |  Ι   | Ο  |  Π | {  |  }  |     ᾼ    |
-  * |-----------------------------------------------------------------------------------------+
-  * | Caps   |  Α  |  Σ  | Δ  |  Φ  |  Γ  |  Η  |  Ξ  |  Κ |  Λ  |  ·   |  "   |     Enter    |
-  * |-----------------------------------------------------------------------------------------+
-  * | Shift      | Ζ | Χ | Ξ |  Ν |  Β | Ν   |  Μ  |   <    |  >   | ?  |       UP            |
-  * |-----------------------------------------------------------------------------------------+
-  * | Ctril    | Windows  |   Alt |           space             |  Alt   |   LEFT  | DWN| RGHT|
-  * \-----------------------------------------------------------------------------------------/
-  *
-  */
- [_FN1_LAYER] = KEYMAP( /*Layer 1 (LSFT depressed)*/ 
-    LSFT(KC_ESCAPE), LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), LSFT(KC_MINS), LSFT(KC_EQL), KC_BSPC,
-    TD(TD_TAB_LS3), LSFT(KC_Q), LSFT(KC_W), LSFT(KC_E), LSFT(KC_R), LSFT(KC_T), LSFT(KC_Y), LSFT(KC_U), LSFT(KC_I), LSFT(KC_O), LSFT(KC_P), LSFT(KC_LBRC), LSFT(KC_RBRC), LSFT(KC_BSLS),
-    KC_DEL, LSFT(KC_A), LSFT(KC_S), LSFT(KC_D), LSFT(KC_F), LSFT(KC_G), LSFT(KC_H), LSFT(KC_J), LSFT(KC_K), LSFT(KC_L), LSFT(KC_SCLN), LSFT(KC_QUOT), KC_ENT,
-    KC_LSFT, LSFT(KC_Z), LSFT(KC_X), LSFT(KC_C), LSFT(KC_V), LSFT(KC_B), LSFT(KC_N), LSFT(KC_M), LSFT(KC_COMM), LSFT(KC_DOT), LSFT(KC_SLSH), KC_UP,
-    KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
-),
-  /*
-  * Layer _FN2_LAYER
     * -----------------------------------------------------------------------------------------.
   * |    |    |    |   ͵   |     |     |     |    |       |  ϗ    | ͼ|  ͽ |  ˘|   ῀ |  BSPC   |
   * |-----------------------------------------------------------------------------------------+
   * | Tab    |  ϑ  | ͷ  |  ϵ  |  ϱ  |  ϛ  |  ϳ   |    | ι   |     | ϖ   | ῾    | ᾿   |   ᾿    |
   * |-----------------------------------------------------------------------------------------+
-  * | Del   |    |   ϲ  | ͻ  |  ϕ   |  ϙ  |  ͱ  |  ϸ  |  ϰ   |    |      |      |    Enter    |
+  * |     |    |   ϲ  | ͻ  |  ϕ   |  ϙ  |  ͱ  |  ϸ  |  ϰ   |    |      |      |    Enter    |
   * |-----------------------------------------------------------------------------------------+
-  * | Shift      | ϡ | ͳ |  ϟ |  ϝ |  ϐ     |  |  ϻ  |       |     |    ´      |      UP      |
+  * | Shift/Alt      | ϡ | ͳ |  ϟ |  ϝ |  ϐ     |  |  ϻ  |       |     |    ´      |   UP      |
   * |-----------------------------------------------------------------------------------------+
   * | Ctrl  |  L1   |  Alt  |               space             |  Alt  |  LEFT  |  DWN  | RGHT  |
   * \-----------------------------------------------------------------------------------------/
   * \-----------------------------------------------------------------------------------------/
   *
   */
- [_FN2_LAYER] = KEYMAP( /* AltGr Depressed */
-    KC_NO, KC_NO, KC_NO, RALT(KC_F3), KC_NO, KC_NO, KC_NO, KC_NO, RALT(KC_F8), RALT(KC_F9), RALT(KC_F10), RALT(KC_F11), RALT(KC_F12), KC_BSPC,
-    TD(TD_TAB_LS4), RALT(KC_Q), RALT(KC_W), RALT(KC_E), RALT(KC_R), RALT(KC_T), RALT(KC_Y), KC_NO, RALT(KC_I), KC_NO, RALT(KC_P), RALT(KC_LBRC), RALT(KC_RBRC), RALT(KC_BSLS),
-    KC_DEL, KC_NO, RALT(KC_S), RALT(KC_D), RALT(KC_F), RALT(KC_G), RALT(KC_H), RALT(KC_J), RALT(KC_K), KC_NO, KC_NO, KC_NO, KC_ENT,
+ [_FN1_LAYER] = KEYMAP( /* AltGr Depressed */
+    KC_NO, KC_NO, KC_NO, RALT(KC_3), KC_NO, KC_NO, KC_NO, KC_NO, RALT(KC_8), RALT(KC_9), RALT(KC_0), RALT(KC_MINS), RALT(KC_EQL), KC_BSPC,
+    TD(TD_TAB_LS2), RALT(KC_Q), RALT(KC_W), RALT(KC_E), RALT(KC_R), RALT(KC_T), RALT(KC_Y), KC_NO, RALT(KC_I), KC_NO, RALT(KC_P), RALT(KC_LBRC), RALT(KC_RBRC), RALT(KC_BSLS),
+    KC_NO, KC_NO, RALT(KC_S), RALT(KC_D), RALT(KC_F), RALT(KC_G), RALT(KC_H), RALT(KC_J), RALT(KC_K), KC_NO, KC_NO, KC_NO, KC_ENT,
     LALT(KC_LSFT), RALT(KC_Z), RALT(KC_X), RALT(KC_C), RALT(KC_V), RALT(KC_B), KC_NO, RALT(KC_M), KC_NO, KC_NO, RALT(KC_SLSH), KC_UP,
     KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
  ),
 /*
-  * Layer _FN3_LAYER
+  * Layer _FN2_LAYER
     * -----------------------------------------------------------------------------------------.
   * |    |    |    |   ʹ  |     |     |     |    |   Ϗ    |      | Ͼ|  Ͽ |  ¯|   ¨ |  BSPC    |
   * |-----------------------------------------------------------------------------------------+
@@ -127,22 +230,22 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   * |-----------------------------------------------------------------------------------------+
   * | Del   |    |   Ϲ  | Ͻ  |     |  Ϙ  |  Ͱ  |  Ϸ |     |    |      |      |    Enter    |
   * |-----------------------------------------------------------------------------------------+
-  * | Shift      | Ϡ | Ͳ |  Ϟ |      Ϝ   |    |  |  Ϻ  |     |     |    ͺ      |      UP      |
+  * | Shift/Alt  | Ϡ | Ͳ |  Ϟ |      Ϝ   |    |  |  Ϻ  |     |     |    ͺ      |      UP      |
   * |-----------------------------------------------------------------------------------------+
   * | Ctrl  |  L1   |  Alt  |               space             |  Alt  |  LEFT  |  DWN  | RGHT |
   * \-----------------------------------------------------------------------------------------/
   * \-----------------------------------------------------------------------------------------/
   *
   */
- [_FN3_LAYER] = KEYMAP( /* AltGr and LSFT depressed */
-    KC_NO, KC_NO, KC_NO, RALT(LSFT(KC_F3)), KC_NO, KC_NO, KC_NO, RALT(LSFT(KC_F7)), KC_NO, RALT(LSFT(KC_F9)), RALT(LSFT(KC_F10)), RALT(LSFT(KC_F11)), RALT(LSFT(KC_F12)), KC_BSPC,
-    TD(TD_TAB_LS5), RALT(LSFT(KC_Q)), RALT(LSFT(KC_W)), RALT(LSFT(KC_E)), RALT(LSFT(KC_R)), RALT(LSFT(KC_T)), KC_NO, RALT(LSFT(KC_U)), RALT(LSFT(KC_I)), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_DEL, KC_NO, RALT(LSFT(KC_S)), RALT(LSFT(KC_D)), KC_NO, RALT(LSFT(KC_G)), RALT(LSFT(KC_H)), RALT(LSFT(KC_J)), KC_NO, KC_NO, KC_NO, KC_NO, KC_ENT,
+ [_FN2_LAYER] = KEYMAP( /* AltGr and LSFT depressed */
+    KC_GESC, KC_NO, KC_NO, RALT(LSFT(KC_3)), KC_NO, KC_NO, KC_NO, RALT(LSFT(KC_7)), KC_NO, RALT(LSFT(KC_9)), RALT(LSFT(KC_0)), RALT(LSFT(KC_MINS)), RALT(LSFT(KC_EQL)), KC_BSPC,
+    TD(TD_TAB_LS3), RALT(LSFT(KC_Q)), RALT(LSFT(KC_W)), RALT(LSFT(KC_E)), RALT(LSFT(KC_R)), RALT(LSFT(KC_T)), KC_NO, RALT(LSFT(KC_U)), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_CAPS, KC_NO, RALT(LSFT(KC_S)), RALT(LSFT(KC_D)), KC_NO, RALT(LSFT(KC_G)), RALT(LSFT(KC_H)), RALT(LSFT(KC_J)), KC_NO, KC_NO, KC_NO, KC_NO, KC_ENT,
     LALT(KC_LSFT), RALT(LSFT(KC_Z)), RALT(LSFT(KC_X)), RALT(LSFT(KC_C)), RALT(LSFT(KC_V)), KC_NO, KC_NO, RALT(LSFT(KC_M)), KC_NO, KC_NO, RALT(LSFT(KC_SLSH)), KC_UP,
     KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
  ),
 /*
-  * Layer _FN4_LAYER
+  * Layer _FN3_LAYER
   * ,-----------------------------------------------------------------------------------------.
   * |  ~  | BT1 | BT2 | BT3 | BT4 |  LEDOF |  LEDON|  LEDN |LEDP| LEDNI | LEDS |USB | UNP  |  |
   * |-----------------------------------------------------------------------------------------+
@@ -156,9 +259,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   * \-----------------------------------------------------------------------------------------/
   *
   */
-[_FN4_LAYER] = KEYMAP( /* Bluetooth and LED settings layer */
-   KC_TRNS, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_AP_LED_OFF, KC_AP_LED_ON, KC_AP_LED_NEXT_PROFILE, KC_AP_LED_PREV_PROFILE, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, KC_AP2_USB, KC_AP2_BT_UNPAIR, KC_NO,
-   TD(TD_TAB_LS5), KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_HOME, KC_END, KC_TRNS,
+[_FN3_LAYER] = KEYMAP( /* Bluetooth and LED settings layer */
+   KC_GESC, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_AP_LED_OFF, KC_AP_LED_ON, KC_AP_LED_NEXT_PROFILE, KC_AP_LED_PREV_PROFILE, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, KC_AP2_USB, KC_AP2_BT_UNPAIR, KC_NO,
+   TD(TD_TAB_LS1), KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_HOME, KC_END, KC_TRNS,
    KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_PGDN, KC_TRNS,
    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_INS, KC_DEL, KC_TRNS,
    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(_FN1_LAYER), MO(_FN2_LAYER), KC_TRNS
@@ -183,54 +286,72 @@ void keyboard_post_init_user(void) {
 
     // Additionally, it also chooses the first LED profile by default. Refer to the "profiles" array in main.c in
     // annepro2-shine to see the order. Replace "i" with the index of your preferred profile. (i.e the RED profile is index 0)
-    annepro2LedSetProfile(2);
+    annepro2LedSetProfile(1);
 }
 
 layer_state_t layer_state_set_user(layer_state_t layer) {
+  /* This is an example of how to automatically highlight keys that are active in a selected layer */
+  const uint16_t *keymap = &keymaps[get_highest_layer(layer)][0][0];
+  annepro2Led_t color = {
+    .p.red = 0,
+    .p.green = 0,
+    .p.blue = 0,
+    .p.alpha = 0xff, 
+  };
+  annepro2Led_t color_disabled = {
+    .p.red = 0,
+    .p.green = 0,
+    .p.blue = 0,
+    .p.alpha = 0xff, 
+  };
   switch(get_highest_layer(layer)) {
+    case _BASE_LAYER:
+      color.p.red = 0x21;
+      color.p.green = 0x8D;
+      color.p.blue = 0xB1;
+      color.p.alpha = 0xff;  
+    break;
     case _FN1_LAYER:
-      // Set the leds to green
-      annepro2LedSetForegroundColor(0x00, 0xFF, 0x00);
+      color.p.red = 0xE3;
+      color.p.green = 0x42;
+      color.p.blue = 0x34;
+      color.p.alpha = 0xff; 
       break;
     case _FN2_LAYER:
-      // Set the leds to blue
-      annepro2LedSetForegroundColor(0x00, 0x00, 0xFF);
+      color.p.red = 0x66;
+      color.p.green = 0x02;
+      color.p.blue = 0x3C;
+      color.p.alpha = 0xff; 
+      color_disabled.p.red = 0x00; 
+      color_disabled.p.green = 0x80;
+      color_disabled.p.blue = 0x80;
+      color_disabled.p.alpha = 0xff; 
       break;
-    default:
+    case _FN3_LAYER:
+      color.p.red = 0xCD;
+      color.p.green = 0x7F;
+      color.p.blue = 0x32;
+      color.p.alpha = 0xff;
+      color_disabled.p.red = 0; 
+      color_disabled.p.green = 0;
+      color_disabled.p.blue = 0x80;
+      color_disabled.p.alpha = 0xff; 
+      break;
+      default:
       // Reset back to the current profile
       annepro2LedResetForegroundColor();
-      break;
+      return layer;
+  }
+  // annepro2LedMaskSetMono(color); // <- disabled
+  for (int row = 0; row < MATRIX_ROWS; row++) {
+    for (int col = 0; col < MATRIX_COLS; col++) {
+      if (keymap[MATRIX_COLS*row + col] != KC_NO) {
+        ledMask[ROWCOL2IDX(row, col)] = color;
+      } else {
+        ledMask[ROWCOL2IDX(row, col)] = color_disabled;
+      }
+    }
+    annepro2LedMaskSetRow(row);
   }
   return layer;
-}
-
-// The function to handle the caps lock logic
-// It's called after the capslock changes state or after entering layers 1 and 2.
-bool led_update_user(led_t leds) {
-  if (leds.caps_lock) {
-    // Set the caps-lock to red
-    const annepro2Led_t color = {
-        .p.red = 0xff,
-        .p.green = 0x00,
-        .p.blue = 0x00,
-        .p.alpha = 0xff
-    };
-
-    annepro2LedMaskSetKey(2, 0, color);
-    /* NOTE: Instead of colouring the capslock only, you can change the whole
-       keyboard with annepro2LedSetForegroundColor */
-  } else {
-    // Reset the capslock if there is no layer active
-    if(!layer_state_is(_FN1_LAYER) && !layer_state_is(_FN2_LAYER)) {
-      const annepro2Led_t color = {
-          .p.red = 0xff,
-          .p.green = 0x00,
-          .p.blue = 0x00,
-          .p.alpha = 0x00
-      };
-      annepro2LedMaskSetKey(2, 0, color);
-    }
-  }
-
-  return true;
 }
